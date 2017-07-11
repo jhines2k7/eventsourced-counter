@@ -2,12 +2,16 @@ export default function reduce(events) {
     "use strict";
 
     return events.reduce( (state, event) => {
-        if(event.topic === 'myapp.update.greeting') {
-            state.greeting = event.data.greeting;
+        if(event.topic === 'myapp.increment.count') {
+            state.countTotal = event.data.countTotal;
+        }
+
+        if(event.topic === 'myapp.decrement.count') {
+            state.countTotal = event.data.countTotal;
         }
 
         return state;
     }, {
-        greeting: 'Goodbye World!'
+        countTotal: 0
     });
 }
