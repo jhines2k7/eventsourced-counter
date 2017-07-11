@@ -3,15 +3,15 @@ export default function reduce(events) {
 
     return events.reduce( (state, event) => {
         if(event.topic === 'myapp.increment.count') {
-            state.countTotal++;
+            state.total++;
         }
 
         if(event.topic === 'myapp.decrement.count') {
-            state.countTotal--;
+            state.total--;
         }
 
         return state;
     }, {
-        countTotal: 0
+        total: 0
     });
 }

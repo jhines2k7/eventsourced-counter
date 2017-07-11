@@ -25,7 +25,7 @@ postal.subscribe({
     callback: function(data, envelope) {
         let state = reduce(EventStore.events);
 
-        document.getElementById('total').innerHTML = state.countTotal
+        document.getElementById('total').innerHTML = state.total
     }.bind(this)
 });
 
@@ -35,22 +35,14 @@ postal.subscribe({
     callback: function(data, envelope) {
         let state = reduce(EventStore.events);
 
-        document.getElementById('total').innerHTML = state.countTotal
+        document.getElementById('total').innerHTML = state.total
     }.bind(this)
-})
-
-postal.subscribe({
-    channel: 'async',
-    topic: 'myapp.initialize.count',
-    callback: function(data, envelope) {
-        document.getElementById('total').innerHTML = state.countTotal
-    }.bind(this)
-})
+});
 
 Storage.get().then( (events) => {
     EventStore.events = events;
 
     let state = reduce(events);
 
-    document.getElementById('total').innerHTML = state.countTotal
+    document.getElementById('total').innerHTML = state.total
 });
